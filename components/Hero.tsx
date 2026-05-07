@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const stats = [
   { value: "FlowCode", label: "Full-Stack & Eng. de Soluções com IA" },
-  { value: "Vista ETF", label: "Founder · plataforma SaaS de ETFs globais" },
+  { value: "Eficys", label: "Founder · plataforma SaaS de ETFs globais (ex-Vista ETF)" },
   { value: "6+", label: "produtos em produção (SaaS · ERP · agentes)" },
   { value: "10 anos", label: "em finanças → hoje 100% em tecnologia" },
 ];
@@ -59,7 +59,8 @@ export default function Hero() {
                 Desenvolvedor full-stack & engenheiro de soluções com IA na{" "}
                 <span className="text-gray-900 font-medium">FlowCode</span>.
                 Founder da{" "}
-                <span className="text-gray-900 font-medium">Vista ETF</span>.
+                <span className="text-gray-900 font-medium">Eficys</span>{" "}
+                (ex-Vista ETF).
                 Background sólido em mercado financeiro (Santander · BTG ·
                 Itaú) que se traduz em produtos quantitativos e SaaS B2B.
               </p>

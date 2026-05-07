@@ -21,7 +21,7 @@ const services = [
       "Bots conversacionais (Telegram), scraping defensivo (Puppeteer/Apify)",
       "Engenharia assistida por IA — Claude Code, Cursor, Composer",
     ],
-    proof: "Agente Telegram (NDA) · Agente IA SDR · Vista ETF",
+    proof: "Agente Telegram (NDA) · Agente IA SDR · Eficys",
   },
   {
     icon: Layers,
@@ -32,7 +32,7 @@ const services = [
       "Onboarding, paywall, dashboards, RBAC com JWT, multi-tenant",
       "Migrações progressivas a partir de MySQL legado",
     ],
-    proof: "Vista ETF · ERP B2B (NDA) · CRM LDC",
+    proof: "Eficys · ERP B2B (NDA) · CRM LDC",
   },
   {
     icon: ShoppingBag,
@@ -54,7 +54,7 @@ const services = [
       "Modelagem em PostgreSQL/Supabase, rotinas automatizadas",
       "Visualizações financeiras e geração de análises com IA",
     ],
-    proof: "Vista ETF · Dividendos AI · Magic Formula B3",
+    proof: "Eficys · Dividendos AI · Magic Formula B3",
   },
   {
     icon: Globe,
@@ -79,7 +79,7 @@ const timeline = [
   { year: "2024", text: "Le Wagon · Bootcamp Ciência de Dados & IA" },
   {
     year: "Jan/2025–Jan/2026",
-    text: "Vista ETF Curator · Founder & Full-Stack Engineer",
+    text: "Eficys (ex-Vista ETF) · Founder & Full-Stack Engineer",
     highlight: true,
   },
   {
@@ -215,7 +215,7 @@ export default function Expertise() {
               olhar de quem vive o negócio.
             </h3>
             <p className="text-base text-gray-600 mt-6 font-light leading-relaxed">
-              Passei por Itaú, Santander e BTG antes de fundar a Vista ETF e
+              Passei por Itaú, Santander e BTG antes de fundar a Eficys e
               entrar como engenheiro full-stack na FlowCode. O resultado: um
               dev que entende código, dado e cliente final — útil em fintech,
               wealth tech, e-commerce e qualquer produto onde regra de negócio

@@ -25,14 +25,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "vista-etf",
-    name: "Vista ETF Curator",
-    shortTagline: "SaaS para construção, análise e acompanhamento de carteiras globais de ETFs",
+    id: "eficys",
+    name: "Eficys",
+    shortTagline: "SaaS para construção, análise e acompanhamento de carteiras globais de ETFs (rebrand de Vista ETF Curator)",
     role: "Founder · Software Engineer / Full-Stack Developer",
     problem:
       "Investidores precisam de ferramentas profissionais para construir e acompanhar carteiras globais de ETFs (EUA, Brasil, Europa) com pesquisa quantitativa, otimização e backtesting — soluções existentes são caras, fragmentadas ou superficiais.",
     solution:
-      "Plataforma SaaS desenvolvida com Spec-Driven Development cobrindo onboarding, research (screeners e rankings), versionamento de carteiras, performance, otimização Markowitz, backtesting, simulações e assinaturas recorrentes.",
+      "Plataforma SaaS desenvolvida com Spec-Driven Development cobrindo onboarding, research (screeners e rankings), versionamento de carteiras, performance, otimização Markowitz, backtesting, simulações e assinaturas recorrentes. Rebranded de Vista ETF Curator para Eficys.",
     highlights: [
       "Pipelines de dados em Python para ingestão e processamento de preços e métricas",
       "Otimização de portfólios (Markowitz), backtesting e simulações de cenário",
@@ -55,9 +55,8 @@ export const projects: Project[] = [
       ai_ml: ["Anthropic Claude SDK", "Pandas", "NumPy", "Markowitz"],
       devops: ["Vercel", "Stripe", "GitHub Actions"],
     },
-    productionUrl: "https://www.vistaetf.com.br",
+    productionUrl: "https://www.eficys.com/",
     isCommercial: true,
-    isPrivate: true,
     contextArea: "SaaS / Wealth Tech / Founder",
   },
   {

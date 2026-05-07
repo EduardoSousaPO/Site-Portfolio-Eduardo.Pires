@@ -20,7 +20,7 @@ export default function Projects() {
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-[1.05] tracking-tight mb-6">
             Da{" "}
-            <span className="italic font-medium">Vista ETF</span> a integrações
+            <span className="italic font-medium">Eficys</span> a integrações
             sob NDA — produtos reais em produção.
           </h2>
           <p className="text-base sm:text-lg text-gray-600 font-light leading-relaxed">
