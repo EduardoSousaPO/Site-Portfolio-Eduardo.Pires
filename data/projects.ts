@@ -260,7 +260,6 @@ export const projects: Project[] = [
       database: ["PostgreSQL"],
       other: ["WhatsApp API", "E-mail API"],
     },
-    productionUrl: "https://frontend-agente-qualificador.vercel.app",
     isPrivate: true,
     isCommercial: true,
     contextArea: "IA / Automação comercial",
@@ -325,8 +324,6 @@ export const projects: Project[] = [
       database: ["Supabase (PostgreSQL)"],
       devops: ["Vercel"],
     },
-    githubUrl: "https://github.com/EduardoSousaPO/crm-ldc",
-    productionUrl: "https://crm-ldc-capital.vercel.app",
     contextArea: "SaaS B2B / CRM",
   },
   {
@@ -354,7 +351,6 @@ export const projects: Project[] = [
       frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
       devops: ["Vercel"],
     },
-    productionUrl: "https://www.piresadvisor.com.br",
     contextArea: "Web / Finanças",
   },
   {
@@ -384,7 +380,6 @@ export const projects: Project[] = [
       database: ["PostgreSQL"],
       ai_ml: ["Pandas", "NumPy", "Scikit-learn", "yfinance"],
     },
-    githubUrl: "https://github.com/EduardoSousaPO/dividendos-ai",
     contextArea: "IA / Finanças / Data Science",
   },
   {
@@ -438,8 +433,6 @@ export const projects: Project[] = [
       frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
       devops: ["Vercel"],
     },
-    githubUrl: "https://github.com/EduardoSousaPO/landing_page_engeloop",
-    productionUrl: "https://landing-page-engeloop.vercel.app",
     contextArea: "Web / Landing",
   },
 ];
