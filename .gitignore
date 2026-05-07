@@ -35,3 +35,16 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local artifacts
+.playwright-mcp/
+dev.log
+*.log
+
+# local screenshots used for QA
+douglus-*.png
+douglus-*.jpeg
+portfolio-*.png
+portfolio-*.jpeg
+v2-*.png
+v2-*.jpeg
+

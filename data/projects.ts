@@ -19,394 +19,428 @@ export type Project = {
   productionUrl?: string;
   isPrivate?: boolean;
   isCommercial?: boolean;
+  isNda?: boolean;
   contextArea?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "agente-ia-sdr",
-    name: "Agente IA SDR",
-    shortTagline: "Automação inteligente para desenvolvimento de vendas com IA",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Processos manuais de prospecção e qualificação de leads consomem tempo valioso da equipe de vendas, reduzindo produtividade e escalabilidade.",
-    solution: "Agente de IA autônomo que automatiza prospecção, qualificação de leads e follow-up usando LLMs e integração com ferramentas de CRM e comunicação.",
+    id: "vista-etf",
+    name: "Vista ETF Curator",
+    shortTagline: "SaaS para construção, análise e acompanhamento de carteiras globais de ETFs",
+    role: "Founder · Software Engineer / Full-Stack Developer",
+    problem:
+      "Investidores precisam de ferramentas profissionais para construir e acompanhar carteiras globais de ETFs (EUA, Brasil, Europa) com pesquisa quantitativa, otimização e backtesting — soluções existentes são caras, fragmentadas ou superficiais.",
+    solution:
+      "Plataforma SaaS desenvolvida com Spec-Driven Development cobrindo onboarding, research (screeners e rankings), versionamento de carteiras, performance, otimização Markowitz, backtesting, simulações e assinaturas recorrentes.",
     highlights: [
-      "Automação completa do pipeline de vendas com agentes de IA",
-      "Integração com APIs de comunicação (WhatsApp, Email, CRM)",
-      "Processamento de linguagem natural para qualificação inteligente de leads",
-      "Sistema de orquestração de tarefas com LangChain",
-      "Redução de 70%+ no tempo de prospecção manual"
+      "Pipelines de dados em Python para ingestão e processamento de preços e métricas",
+      "Otimização de portfólios (Markowitz), backtesting e simulações de cenário",
+      "Geração de análises e narrativas com IA",
+      "Autenticação JWT, políticas RLS multi-tenant e rotinas automatizadas",
+      "Stripe para assinaturas recorrentes e ledger auditável",
     ],
     features: [
-      "Prospecção automatizada de leads",
-      "Qualificação inteligente usando IA",
-      "Follow-up automático personalizado",
-      "Integração com CRM",
-      "Dashboard de métricas e performance"
+      "Onboarding e paywall",
+      "Research: screeners, rankings, comparações",
+      "Otimização Markowitz e backtesting",
+      "Versionamento e acompanhamento de carteiras",
+      "Dashboards de performance e atribuição",
+      "Assinaturas recorrentes via Stripe",
+    ],
+    techStack: {
+      frontend: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "TanStack Query"],
+      backend: ["Edge Functions (Deno)", "Hono"],
+      database: ["Supabase (PostgreSQL)", "RLS"],
+      ai_ml: ["Anthropic Claude SDK", "Pandas", "NumPy", "Markowitz"],
+      devops: ["Vercel", "Stripe", "GitHub Actions"],
+    },
+    productionUrl: "https://www.vistaetf.com.br",
+    isCommercial: true,
+    isPrivate: true,
+    contextArea: "SaaS / Wealth Tech / Founder",
+  },
+  {
+    id: "flowcode-fidelidade",
+    name: "Plataforma de fidelidade & rede de indicados",
+    shortTagline: "Programa de pontos B2C integrado ao Shopify, com motor de comissões e ledger auditável",
+    role: "Desenvolvedor Full-Stack · FlowCode (cliente sob NDA)",
+    problem:
+      "Cliente do varejo/saúde precisava de programa de fidelidade integrado ao Shopify com rede de indicados multi-nível, motor de comissões e auditoria financeira — sem dependência de plataformas SaaS prontas e com regras de negócio próprias.",
+    solution:
+      "Plataforma B2C custom integrada ao Shopify Admin API com programa de pontos, rede de indicados multi-nível, motor de regras de comissionamento e ledger auditável — multi-tenant com Row Level Security.",
+    highlights: [
+      "Integração com Shopify Admin API e webhooks idempotentes",
+      "Motor de regras de comissionamento e ledger auditável",
+      "Conciliação de pedidos, estornos e cancelamentos",
+      "Painel admin com auditoria, RBAC (JWT) e relatórios financeiros",
+      "Modelagem multi-tenant com RLS no Supabase",
+      "Feature flags para rollout progressivo",
+    ],
+    features: [
+      "Programa de pontos e fidelidade",
+      "Rede de indicados multi-nível",
+      "Motor de comissões configurável",
+      "Painel administrativo com RBAC",
+      "Relatórios financeiros e auditoria",
+    ],
+    techStack: {
+      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
+      backend: ["Edge Functions (Deno)", "Webhooks idempotentes"],
+      database: ["Supabase (PostgreSQL)", "RLS multi-tenant"],
+      other: ["Shopify Admin API"],
+      devops: ["Vercel"],
+    },
+    isPrivate: true,
+    isNda: true,
+    isCommercial: true,
+    contextArea: "E-commerce / Fidelidade / NDA",
+  },
+  {
+    id: "flowcode-shopee",
+    name: "Integração Shopee Seller Center",
+    shortTagline: "Sincronização de catálogo, preços e pedidos via Open Platform + scraping defensivo",
+    role: "Engenheiro de Soluções · FlowCode (cliente sob NDA)",
+    problem:
+      "Seller Shopee precisava sincronizar catálogo, preços, estoque e pedidos com seu ERP, e ainda monitorar concorrência sem depender de soluções genéricas — com idempotência e auditoria.",
+    solution:
+      "Integração com Shopee Open Platform / Seller Center via OAuth, com sincronização incremental, pipeline de scraping defensivo para enriquecimento de catálogo e monitoramento, webhooks idempotentes e ledger auditável.",
+    highlights: [
+      "OAuth + sincronização incremental e idempotente de catálogo, preços e estoque",
+      "Scraping defensivo (Puppeteer/Apify) com filas, retries e backoff exponencial",
+      "Reconciliação de pedidos via webhooks idempotentes",
+      "Ledger auditável e logs estruturados",
+      "Modelagem multi-tenant com RLS, mídia em Azure Blob com signed URLs",
+    ],
+    features: [
+      "Sincronização Shopee ↔ ERP",
+      "Monitoramento de preço e posição da concorrência",
+      "Reconciliação de pedidos e estornos",
+      "Painel de jobs e observabilidade",
+    ],
+    techStack: {
+      backend: ["Hono", "Edge Functions (Deno)"],
+      database: ["Supabase (PostgreSQL)", "RLS"],
+      other: ["Shopee Open Platform", "Puppeteer", "Apify", "Azure Blob"],
+      devops: ["Vercel", "VPS Linux (PM2/Nginx)"],
+    },
+    isPrivate: true,
+    isNda: true,
+    isCommercial: true,
+    contextArea: "E-commerce / Integração / NDA",
+  },
+  {
+    id: "flowcode-erp-b2b",
+    name: "ERP & catálogo B2B com CMS proprietário",
+    shortTagline: "ERP industrial com CMS draft→preview→publish e migração progressiva de MySQL legado",
+    role: "Desenvolvedor Full-Stack · FlowCode (cliente sob NDA)",
+    problem:
+      "Indústria com ERP em MySQL legado precisava de catálogo B2B moderno, CMS proprietário (draft→preview→publish) e site institucional com SEO técnico, sem rewrite arriscado do core.",
+    solution:
+      "ERP B2B com gestão de pedidos, catálogo e CMS proprietário versionado. Anti-corruption layer sobre o MySQL legado e migração progressiva para Supabase/PostgreSQL com domínio limpo, mantendo o sistema em produção.",
+    highlights: [
+      "Anti-corruption layer sobre MySQL legado",
+      "Migração progressiva para Supabase/PostgreSQL",
+      "CMS proprietário com versionamento e gestão de mídia",
+      "Site institucional com SEO técnico e integração RD Station",
+      "Deploy híbrido: Vercel + VPS Linux (PM2/Nginx) para serviços auxiliares",
+    ],
+    features: [
+      "Gestão de pedidos B2B",
+      "Catálogo com versionamento",
+      "CMS draft → preview → publish",
+      "Geração de leads (RD Station)",
+      "SEO técnico no site institucional",
+    ],
+    techStack: {
+      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
+      backend: ["Hono", "Edge Functions (Deno)"],
+      database: ["Supabase (PostgreSQL)", "MySQL (legado)"],
+      other: ["RD Station", "Azure Blob"],
+      devops: ["Vercel", "VPS Linux (PM2/Nginx)"],
+    },
+    isPrivate: true,
+    isNda: true,
+    isCommercial: true,
+    contextArea: "ERP / B2B / NDA",
+  },
+  {
+    id: "flowcode-agente-telegram",
+    name: "Agente autônomo com interface em Telegram",
+    shortTagline: "Agente conversacional multi-agente com Anthropic Claude SDK + MCP, scraping e relatórios",
+    role: "Engenheiro de Soluções com IA · FlowCode (cliente sob NDA)",
+    problem:
+      "Cliente precisava de assistente conversacional capaz de acionar ferramentas (scraping, relatórios, agendamentos) com auditoria de decisões e controle de uso por usuário.",
+    solution:
+      "Agente conversacional via Telegram com orquestração multi-agente e Model Context Protocol (MCP) para acionamento de ferramentas, scraping de fontes públicas, geração de relatórios em PDF/Excel e disparos programados.",
+    highlights: [
+      "Anthropic Claude SDK + Model Context Protocol (MCP)",
+      "Orquestração multi-agente com tool use",
+      "Scraping público e geração de PDF/Excel",
+      "Persistência em Supabase com auditoria de decisões",
+      "Cron jobs e controle de uso por usuário",
+    ],
+    features: [
+      "Conversa em linguagem natural via Telegram",
+      "Acionamento de ferramentas via MCP",
+      "Geração de relatórios sob demanda",
+      "Disparos programados",
+      "Histórico e auditoria",
+    ],
+    techStack: {
+      backend: ["Node.js", "Edge Functions (Deno)"],
+      database: ["Supabase (PostgreSQL)"],
+      ai_ml: ["Anthropic Claude SDK", "MCP", "Multi-agent"],
+      other: ["Telegram Bot API", "Puppeteer", "Apify"],
+      devops: ["VPS Linux (PM2)", "Cron"],
+    },
+    isPrivate: true,
+    isNda: true,
+    isCommercial: true,
+    contextArea: "IA / Agentes / NDA",
+  },
+  {
+    id: "flowcode-saas-pagamento",
+    name: "SaaS com onboarding, paywall e pagamentos",
+    shortTagline: "Assinaturas Stripe + cobranças avulsas via PIX/cashin com ledger auditável",
+    role: "Desenvolvedor Full-Stack · FlowCode (cliente sob NDA)",
+    problem:
+      "Cliente precisava lançar produto SaaS com onboarding, paywall, dashboards e cobrança recorrente — incluindo PIX e cashin para o público brasileiro, com auditoria financeira e idempotência.",
+    solution:
+      "SaaS completo com onboarding, paywall e dashboards de cliente, assinaturas recorrentes via Stripe e cobranças avulsas via PIX/cashin. Webhooks idempotentes, ledger auditável e conciliação de cobranças, estornos e mudanças de plano.",
+    highlights: [
+      "Onboarding, paywall e dashboards de cliente",
+      "Stripe (assinaturas) + PIX/cashin (avulsos)",
+      "Webhooks idempotentes com ledger auditável",
+      "Autenticação JWT, RBAC e RLS multi-tenant",
+      "Testes em Vitest e Playwright (E2E + smoke tests)",
+    ],
+    features: [
+      "Onboarding e paywall",
+      "Dashboards de cliente",
+      "Assinaturas recorrentes",
+      "Cobranças avulsas (PIX/cashin)",
+      "Painel administrativo",
+    ],
+    techStack: {
+      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
+      backend: ["Edge Functions (Deno)"],
+      database: ["Supabase (PostgreSQL)", "RLS"],
+      other: ["Stripe", "PIX", "cashin"],
+      devops: ["Vercel", "Vitest", "Playwright"],
+    },
+    isPrivate: true,
+    isNda: true,
+    isCommercial: true,
+    contextArea: "SaaS / Pagamentos / NDA",
+  },
+  {
+    id: "agente-ia-sdr",
+    name: "Agente IA SDR",
+    shortTagline: "Automação de prospecção e qualificação de leads com agentes de IA",
+    role: "Desenvolvedor principal / Arquiteto da solução",
+    problem:
+      "Processos manuais de prospecção e qualificação consomem tempo da equipe de vendas e impedem escala.",
+    solution:
+      "Agente de IA autônomo que automatiza prospecção, qualificação e follow-up usando LLMs e integração com canais (WhatsApp, e-mail) e CRM.",
+    highlights: [
+      "Automação completa do pipeline de prospecção",
+      "Integração com WhatsApp, e-mail e CRM",
+      "Qualificação inteligente via LLM",
+      "Orquestração de tarefas com LangChain",
+    ],
+    features: [
+      "Prospecção automatizada",
+      "Qualificação por IA",
+      "Follow-up personalizado",
+      "Dashboard de performance",
     ],
     techStack: {
       ai_ml: ["LangChain", "OpenAI", "Groq"],
       backend: ["Python", "FastAPI"],
       database: ["PostgreSQL"],
-      other: ["WhatsApp API", "Email API", "CRM Integration"]
+      other: ["WhatsApp API", "E-mail API"],
     },
     productionUrl: "https://frontend-agente-qualificador.vercel.app",
     isPrivate: true,
     isCommercial: true,
-    contextArea: "IA / Automação comercial"
-  },
-  {
-    id: "saas-etf-curator",
-    name: "VISTA ETF",
-    shortTagline: "Plataforma SaaS para curadoria e análise inteligente de ETFs",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Investidores e gestores precisam de ferramentas profissionais para análise, comparação e curadoria de ETFs, mas as soluções existentes são caras ou limitadas.",
-    solution: "SaaS completo com análise quantitativa de ETFs, recomendações baseadas em IA, backtesting e ferramentas de gestão de portfólio para profissionais do mercado financeiro.",
-    highlights: [
-      "Análise quantitativa avançada de ETFs",
-      "Recomendações personalizadas usando machine learning",
-      "Backtesting de estratégias de investimento",
-      "API robusta para integração com outras plataformas",
-      "Dashboard interativo com visualizações de dados financeiros"
-    ],
-    features: [
-      "Curadoria inteligente de ETFs",
-      "Análise de performance e risco",
-      "Comparação de produtos",
-      "Alertas e notificações personalizadas",
-      "Gestão de portfólios"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js"],
-      backend: ["Node.js", "Python"],
-      database: ["PostgreSQL", "Redis"],
-      ai_ml: ["Pandas", "NumPy", "Scikit-learn"],
-      devops: ["Vercel", "Docker"]
-    },
-    productionUrl: "https://www.vistaetf.com.br",
-    isPrivate: true,
-    isCommercial: true,
-    contextArea: "Finanças / SaaS B2B"
+    contextArea: "IA / Automação comercial",
   },
   {
     id: "site-ldc-capital",
     name: "Site LDC Capital",
-    shortTagline: "Site institucional de alta performance com SEO otimizado",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Empresa de gestão patrimonial precisava de site institucional moderno, performático e otimizado para conversão de leads qualificados.",
-    solution: "Site institucional desenvolvido em Next.js com arquitetura otimizada para SEO, performance (Lighthouse 95+), integração com Supabase para gestão de leads e design system profissional.",
+    shortTagline: "Site institucional Next.js com Lighthouse 95+ e gestão de leads",
+    role: "Desenvolvedor principal",
+    problem:
+      "Empresa de gestão patrimonial precisava de site institucional moderno, performático e otimizado para conversão.",
+    solution:
+      "Site em Next.js com SEO técnico, Lighthouse 95+, gestão de leads via Supabase, design system e blog com MDX.",
     highlights: [
-      "Performance excepcional (Lighthouse Score 95+)",
-      "SEO otimizado com metadata e structured data",
-      "Sistema de gestão de leads integrado",
-      "Design system completo e responsivo",
-      "Blog com MDX para conteúdo dinâmico",
-      "Formulários com validação e integração de APIs"
+      "Lighthouse 95+",
+      "SEO técnico com structured data",
+      "Captura de leads integrada",
+      "Blog com MDX",
     ],
     features: [
-      "Landing pages otimizadas para conversão",
-      "Blog com sistema de categorias",
-      "Formulário de captura de leads",
-      "Carrossel de depoimentos",
+      "Landing pages otimizadas",
+      "Blog com categorias",
+      "Formulário de leads",
       "FAQ interativo",
-      "Download de materiais (e-books, guias)"
+      "Download de materiais",
     ],
     techStack: {
       frontend: ["Next.js", "TypeScript", "Tailwind CSS", "MDX"],
       backend: ["Next.js API Routes", "Supabase"],
       database: ["Supabase (PostgreSQL)"],
-      devops: ["Vercel"]
+      devops: ["Vercel"],
     },
     githubUrl: "https://github.com/EduardoSousaPO/site-ldc-capital",
     productionUrl: "https://www.ldccapital.com.br",
-    contextArea: "Desenvolvimento Web / Finanças"
+    contextArea: "Web / Finanças",
   },
   {
     id: "crm-ldc",
     name: "CRM LDC",
-    shortTagline: "Sistema completo de gestão de relacionamento com clientes",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Gestão manual de clientes, leads e pipeline de vendas em planilhas e ferramentas desconectadas, dificultando acompanhamento e produtividade da equipe.",
-    solution: "CRM completo desenvolvido em Next.js com autenticação, gestão de clientes, pipeline de vendas, automações e integração com ferramentas de comunicação.",
+    shortTagline: "CRM full-stack com pipeline visual e automações",
+    role: "Desenvolvedor principal",
+    problem:
+      "Gestão de leads e pipeline em planilhas dispersas dificultava produtividade da equipe.",
+    solution:
+      "CRM em Next.js + Supabase com autenticação, pipeline kanban, gestão de clientes, tarefas e relatórios analíticos.",
     highlights: [
-      "Autenticação segura com Supabase Auth",
-      "Pipeline de vendas visual e interativo",
-      "Gestão completa de clientes e contatos",
-      "Sistema de tarefas e lembretes",
-      "Relatórios e dashboards analíticos",
-      "Integração com APIs externas"
+      "Auth com Supabase",
+      "Pipeline Kanban interativo",
+      "Tarefas e lembretes",
+      "Dashboards e relatórios",
     ],
     features: [
-      "Gestão de clientes e contatos",
-      "Pipeline de vendas (Kanban)",
-      "Sistema de tarefas e atividades",
+      "Gestão de clientes",
+      "Pipeline Kanban",
+      "Tarefas e atividades",
       "Histórico de interações",
-      "Relatórios e métricas",
-      "Autenticação e controle de acesso"
+      "Controle de acesso",
     ],
     techStack: {
       frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
       backend: ["Next.js API Routes", "Supabase"],
       database: ["Supabase (PostgreSQL)"],
-      devops: ["Vercel"]
+      devops: ["Vercel"],
     },
     githubUrl: "https://github.com/EduardoSousaPO/crm-ldc",
     productionUrl: "https://crm-ldc-capital.vercel.app",
-    contextArea: "SaaS B2B / CRM"
-  },
-  {
-    id: "ldc-capital-programs",
-    name: "LDC Capital Programs",
-    shortTagline: "Sistema de gestão de programas e produtos financeiros",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Necessidade de gerenciar múltiplos programas de investimento, produtos financeiros e relacionamento com clientes de forma centralizada e eficiente.",
-    solution: "Sistema completo para gestão de programas financeiros, produtos, clientes e operações, com interface administrativa e relatórios avançados.",
-    highlights: [
-      "Gestão centralizada de programas financeiros",
-      "Interface administrativa completa",
-      "Sistema de permissões e roles",
-      "Relatórios e analytics avançados",
-      "Integração com sistemas financeiros"
-    ],
-    features: [
-      "Gestão de programas e produtos",
-      "Cadastro de clientes",
-      "Controle de operações",
-      "Relatórios personalizados",
-      "Dashboard administrativo"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      backend: ["Next.js API Routes", "Supabase"],
-      database: ["Supabase (PostgreSQL)"],
-      devops: ["Vercel"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/LDC-CAPITAL-PROGRAMS",
-    contextArea: "Finanças / SaaS B2B"
-  },
-  {
-    id: "gestor-tarefas-tdah",
-    name: "FocusFlow - Gestor de Tarefas TDAH",
-    shortTagline: "Aplicação web especializada para gestão de tarefas para pessoas com TDAH",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Pessoas com TDAH enfrentam dificuldades com ferramentas de produtividade tradicionais que não consideram suas necessidades específicas de organização e foco.",
-    solution: "Aplicação web desenvolvida em Flask com interface adaptada para TDAH, incluindo técnicas de Pomodoro, organização visual, lembretes e gamificação para aumentar engajamento.",
-    highlights: [
-      "Interface adaptada para necessidades de TDAH",
-      "Técnica Pomodoro integrada",
-      "Organização visual e intuitiva",
-      "Sistema de gamificação",
-      "Lembretes e notificações inteligentes"
-    ],
-    features: [
-      "Gestão de tarefas com categorias",
-      "Timer Pomodoro integrado",
-      "Visualização de progresso",
-      "Sistema de recompensas",
-      "Lembretes personalizados",
-      "Estatísticas de produtividade"
-    ],
-    techStack: {
-      frontend: ["HTML", "CSS", "JavaScript"],
-      backend: ["Python", "Flask"],
-      database: ["SQLite"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/gestor_tarefas_tdah",
-    contextArea: "Produto Digital / Saúde"
-  },
-  {
-    id: "landing-page-engeloop",
-    name: "Landing Page Engeloop",
-    shortTagline: "Landing page moderna e otimizada para conversão",
-    role: "Desenvolvedor principal",
-    problem: "Empresa precisava de landing page profissional, moderna e otimizada para conversão de visitantes em leads qualificados.",
-    solution: "Landing page desenvolvida em Next.js com design moderno, animações suaves, formulários otimizados e integração com ferramentas de marketing.",
-    highlights: [
-      "Design moderno e responsivo",
-      "Otimização para conversão",
-      "Animações e interações suaves",
-      "Performance otimizada",
-      "SEO básico implementado"
-    ],
-    features: [
-      "Hero section impactante",
-      "Seções de benefícios e features",
-      "Formulário de contato",
-      "Depoimentos",
-      "Call-to-action otimizado"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      devops: ["Vercel"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/landing_page_engeloop",
-    productionUrl: "https://landing-page-engeloop.vercel.app",
-    contextArea: "Desenvolvimento Web"
-  },
-  {
-    id: "equilibri",
-    name: "Equilibri",
-    shortTagline: "Plataforma para equilíbrio e bem-estar",
-    role: "Desenvolvedor principal",
-    problem: "Necessidade de uma plataforma digital para gestão de bem-estar e equilíbrio pessoal.",
-    solution: "Plataforma web desenvolvida para auxiliar usuários em sua jornada de bem-estar, com ferramentas de acompanhamento e métricas.",
-    highlights: [
-      "Interface intuitiva e moderna",
-      "Sistema de acompanhamento personalizado",
-      "Visualizações de dados e progresso"
-    ],
-    features: [
-      "Gestão de objetivos",
-      "Acompanhamento de progresso",
-      "Métricas e estatísticas",
-      "Interface responsiva"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      backend: ["Next.js API Routes"],
-      database: ["PostgreSQL"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/equilibri",
-    productionUrl: "https://equilibri.vercel.app",
-    contextArea: "Produto Digital"
-  },
-  {
-    id: "donum-app",
-    name: "Donum App",
-    shortTagline: "Aplicativo para doações e impacto social",
-    role: "Desenvolvedor principal",
-    problem: "Facilitar conexão entre doadores e causas sociais de forma transparente e eficiente.",
-    solution: "Aplicativo web desenvolvido para conectar doadores com organizações e causas, com sistema de transparência e acompanhamento de impacto.",
-    highlights: [
-      "Sistema de doações integrado",
-      "Transparência e rastreabilidade",
-      "Interface focada em experiência do usuário"
-    ],
-    features: [
-      "Cadastro de organizações",
-      "Sistema de doações",
-      "Acompanhamento de impacto",
-      "Perfis de usuários"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      backend: ["Next.js API Routes"],
-      database: ["PostgreSQL"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/donum-app",
-    productionUrl: "https://donum-app.vercel.app",
-    contextArea: "Produto Digital / Impacto Social"
-  },
-  {
-    id: "seletor-a-es",
-    name: "Seletor de Ações",
-    shortTagline: "Ferramenta de seleção e análise",
-    role: "Desenvolvedor principal",
-    problem: "Necessidade de ferramenta para seleção e análise de dados de forma eficiente.",
-    solution: "Aplicação web desenvolvida para seleção, filtragem e análise de dados com interface intuitiva e funcionalidades avançadas.",
-    highlights: [
-      "Interface de seleção intuitiva",
-      "Filtros avançados",
-      "Visualização de resultados"
-    ],
-    features: [
-      "Seleção e filtragem de dados",
-      "Análise de resultados",
-      "Exportação de dados",
-      "Interface responsiva"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      backend: ["Next.js API Routes"],
-      database: ["PostgreSQL"]
-    },
-    contextArea: "Ferramenta / Análise de Dados"
-  },
-  {
-    id: "site-larissa",
-    name: "Site Larissa",
-    shortTagline: "Site personalizado para cliente",
-    role: "Desenvolvedor principal",
-    problem: "Cliente precisava de site pessoal/profissional moderno e responsivo para apresentar seus serviços.",
-    solution: "Site personalizado desenvolvido em Next.js com design moderno, otimizado para performance e SEO.",
-    highlights: [
-      "Design personalizado e moderno",
-      "Performance otimizada",
-      "Responsivo e acessível"
-    ],
-    features: [
-      "Páginas de apresentação",
-      "Portfólio de trabalhos",
-      "Formulário de contato",
-      "Blog (opcional)"
-    ],
-    techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      devops: ["Vercel"]
-    },
-    githubUrl: "https://github.com/EduardoSousaPO/site-larissa",
-    productionUrl: "https://site-larissa-6gnv.vercel.app",
-    contextArea: "Desenvolvimento Web"
+    contextArea: "SaaS B2B / CRM",
   },
   {
     id: "pires-advisor",
     name: "Pires Advisor",
-    shortTagline: "Site profissional de consultoria financeira e planejamento patrimonial",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Necessidade de um site profissional moderno para apresentar serviços de consultoria financeira, planejamento patrimonial e assessoria de investimentos de forma clara e impactante.",
-    solution: "Site institucional desenvolvido em Next.js com design elegante, seções de serviços, blog sobre finanças e investimentos, e integração com formulários de contato para captação de leads qualificados.",
+    shortTagline: "Site profissional de consultoria financeira com blog integrado",
+    role: "Desenvolvedor principal",
+    problem:
+      "Necessidade de site profissional para apresentar consultoria financeira, planejamento patrimonial e captar leads qualificados.",
+    solution:
+      "Site institucional em Next.js com seções de serviços, blog sobre finanças e formulários de contato.",
     highlights: [
-      "Design profissional e elegante",
-      "Performance otimizada para SEO",
-      "Blog integrado para conteúdo sobre finanças",
-      "Formulários de contato otimizados",
-      "Responsivo e acessível"
+      "Design profissional",
+      "SEO otimizado",
+      "Blog integrado",
+      "Captura de leads",
     ],
     features: [
-      "Apresentação de serviços profissionais",
-      "Blog sobre finanças e investimentos",
+      "Apresentação de serviços",
+      "Blog de finanças",
       "Formulário de contato",
-      "Seções sobre metodologia e experiência",
-      "Design moderno e profissional"
+      "Metodologia e experiência",
     ],
     techStack: {
       frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      devops: ["Vercel"]
+      devops: ["Vercel"],
     },
     productionUrl: "https://www.piresadvisor.com.br",
-    contextArea: "Desenvolvimento Web / Finanças"
+    contextArea: "Web / Finanças",
   },
   {
     id: "dividendos-ai",
     name: "Dividendos AI",
     shortTagline: "Análise inteligente de dividendos com IA e data science",
-    role: "Desenvolvedor principal / Arquiteto da solução",
-    problem: "Investidores em dividendos precisam de análises profundas e preditivas sobre pagamentos futuros, mas ferramentas existentes são limitadas a dados históricos.",
-    solution: "Plataforma de análise de dividendos usando IA para previsão de pagamentos, análise de sustentabilidade e recomendações personalizadas baseadas em machine learning.",
+    role: "Desenvolvedor principal",
+    problem:
+      "Investidores em dividendos precisam de análises preditivas e de sustentabilidade — não apenas histórico.",
+    solution:
+      "Plataforma de análise de dividendos com modelos preditivos, análise de sustentabilidade e recomendações por perfil.",
     highlights: [
       "Modelos preditivos para dividendos futuros",
-      "Análise de sustentabilidade usando múltiplos indicadores",
-      "Processamento de dados financeiros em tempo real",
-      "Visualizações interativas de dados",
-      "Recomendações personalizadas baseadas em perfil do investidor"
+      "Análise de sustentabilidade",
+      "Visualizações interativas",
+      "Dados financeiros em tempo real",
     ],
     features: [
-      "Análise histórica de dividendos",
-      "Previsão de pagamentos futuros",
-      "Análise de sustentabilidade",
+      "Histórico de dividendos",
+      "Previsão de pagamentos",
       "Comparação entre empresas",
       "Alertas personalizados",
-      "Dashboard com métricas avançadas"
     ],
     techStack: {
       frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
       backend: ["Python", "FastAPI"],
       database: ["PostgreSQL"],
       ai_ml: ["Pandas", "NumPy", "Scikit-learn", "yfinance"],
-      other: ["APIs financeiras"]
     },
     githubUrl: "https://github.com/EduardoSousaPO/dividendos-ai",
-    contextArea: "IA / Finanças / Data Science"
-  }
+    contextArea: "IA / Finanças / Data Science",
+  },
+  {
+    id: "loja-chuteiras",
+    name: "Loja de Chuteiras (Nuvem Shop)",
+    shortTagline: "E-commerce próprio operado ponta a ponta no segmento esportivo",
+    role: "Founder & Operador",
+    problem:
+      "Validar prática operacional de e-commerce — funil, tráfego, fulfillment — para alimentar projetos B2B.",
+    solution:
+      "Loja temática na Nuvem Shop com customização de tema, catálogo, integrações de pagamento e operação ponta a ponta (cadastro, copy, fotografia, fulfillment, atendimento, tráfego).",
+    highlights: [
+      "Operação real de loja Nuvem Shop",
+      "Visão prática de funil ponta a ponta",
+      "SEO e tráfego pago",
+      "Atendimento e pós-venda",
+    ],
+    features: [
+      "Customização de tema",
+      "Gestão de catálogo",
+      "Pagamentos e fretes",
+      "Métricas de conversão",
+    ],
+    techStack: {
+      other: ["Nuvem Shop", "Pagamentos", "Redes sociais"],
+    },
+    contextArea: "E-commerce / Operação",
+  },
+  {
+    id: "landing-page-engeloop",
+    name: "Landing Page Engeloop",
+    shortTagline: "Landing page Next.js otimizada para conversão",
+    role: "Desenvolvedor principal",
+    problem:
+      "Empresa precisava de landing page profissional otimizada para conversão de leads.",
+    solution:
+      "Landing em Next.js com design moderno, animações suaves e formulários otimizados.",
+    highlights: [
+      "Design responsivo",
+      "Otimizada para conversão",
+      "Animações suaves",
+      "SEO básico",
+    ],
+    features: [
+      "Hero impactante",
+      "Seções de benefícios",
+      "Formulário de contato",
+      "Depoimentos",
+    ],
+    techStack: {
+      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
+      devops: ["Vercel"],
+    },
+    githubUrl: "https://github.com/EduardoSousaPO/landing_page_engeloop",
+    productionUrl: "https://landing-page-engeloop.vercel.app",
+    contextArea: "Web / Landing",
+  },
 ];
-

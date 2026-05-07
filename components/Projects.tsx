@@ -5,58 +5,34 @@ import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
-  // Ordenar projetos: IA/automação primeiro, depois finanças/data science, depois outros
-  const sortedProjects = [...projects].sort((a, b) => {
-    const priorityOrder: { [key: string]: number } = {
-      "IA / Automação comercial": 1,
-      "IA / Finanças / Data Science": 2,
-      "Finanças / SaaS B2B": 3,
-      "Finanças / Data Science": 4,
-      "SaaS B2B / CRM": 5,
-      "Desenvolvimento Web / Finanças": 6,
-      "Desenvolvimento Web": 7,
-      "Produto Digital": 8,
-      "Ferramenta / Análise de Dados": 9,
-    };
-
-    const aPriority = priorityOrder[a.contextArea || ""] || 10;
-    const bPriority = priorityOrder[b.contextArea || ""] || 10;
-
-    return aPriority - bPriority;
-  });
-
-  // Mover Dividendos AI para o final
-  const dividendosProject = sortedProjects.find(p => p.id === "dividendos-ai");
-  const otherProjects = sortedProjects.filter(p => p.id !== "dividendos-ai");
-  const reorderedProjects = [...otherProjects];
-  if (dividendosProject) {
-    reorderedProjects.push(dividendosProject);
-  }
-
-  // Mostrar os 10 primeiros projetos mais relevantes
-  const featuredProjects = reorderedProjects.slice(0, 10);
-
   return (
-    <section id="projetos" className="py-24 bg-gray-50">
+    <section id="projetos" className="py-24 sm:py-32 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="max-w-3xl mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4">
-            Projetos em destaque
+          <p className="text-xs sm:text-sm uppercase tracking-[0.22em] text-gray-500 mb-6">
+            Projetos selecionados
+          </p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-[1.05] tracking-tight mb-6">
+            Da{" "}
+            <span className="italic font-medium">Vista ETF</span> a integrações
+            sob NDA — produtos reais em produção.
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 font-light max-w-2xl mx-auto">
-            Seleção de projetos que demonstram capacidade técnica, pensamento de
-            produto e integração de IA e dados ao negócio.
+          <p className="text-base sm:text-lg text-gray-600 font-light leading-relaxed">
+            Trabalhos selecionados que mostram o que já entreguei: SaaS,
+            agentes com IA, integrações de e-commerce, ERPs e sites
+            institucionais. Os projetos marcados como NDA são de clientes da
+            FlowCode e estão descritos no nível permitido pelo contrato.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {featuredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+          {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
@@ -64,4 +40,3 @@ export default function Projects() {
     </section>
   );
 }
-

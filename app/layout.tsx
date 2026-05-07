@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
+import GrainOverlay from "@/components/GrainOverlay";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,7 +43,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <SmoothScroll />
+        <CustomCursor />
+        {children}
+        <GrainOverlay />
+      </body>
     </html>
   );
 }
